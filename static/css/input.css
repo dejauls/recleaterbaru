@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glow-rgb: 56, 55, 54;
+}
+
+.trail { /* className for the trail elements */
+  @apply hidden md:block rounded-full bg-gray-500 absolute aspect-square w-5 pointer-events-none;
+    z-index: 99999999999999;
+  }
+
+.head-trail { /* className for the trail elements */
+  @apply hidden md:block rounded-full bg-transparent border-2 border-[#F2EEE6] absolute aspect-square w-3 pointer-events-none translate-x-1 translate-y-1;
+    z-index: 999999999999999;
+  }
+
+*{
+  cursor: none;
+}
+
+.scroll-to-top {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  visibility: hidden;
+}
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
