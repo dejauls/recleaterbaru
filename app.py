@@ -93,7 +93,7 @@ def add_article():
         }
         
         collection.insert_one(article)
-        return redirect('/')
+        return redirect('/artikel')
     return render_template('posting-artikel.html')
 
 @app.route('/article/<slug>')
@@ -107,4 +107,4 @@ def article_detail(slug):
     return render_template('detail-artikel.html', article=article, articles=other_articles)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
