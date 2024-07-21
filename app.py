@@ -3,11 +3,19 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from slugify import slugify
 from markupsafe import Markup
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb://belajar:belajar@ac-pewhlve-shard-00-00.m1k88nt.mongodb.net:27017,ac-pewhlve-shard-00-01.m1k88nt.mongodb.net:27017,ac-pewhlve-shard-00-02.m1k88nt.mongodb.net:27017/?ssl=true&replicaSet=atlas-i3tctf-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0')
-db = client['db-artikel']
+mongo_uri = os.getenv('MONGO_URI')
+mongo_dbname = os.getenv('MONGO_DBNAME')
+
+# MongoDB connection setup
+client = MongoClient(mongo_uri)
+db = client[mongo_dbname]
 collection = db['artikel']
 
 PER_PAGE = 20
